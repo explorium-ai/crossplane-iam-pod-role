@@ -1,0 +1,31 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+spec:
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Federated": "arn:aws:iam::{{ .Values.aws_account_id}}:oidc-provider/oidc.eks.{{ .Values.aws_region }}.amazonaws.com/id/{{ .Values.aws_eks_openId_connect_number }}"
+                },
+                "Action": "sts:AssumeRoleWithWebIdentity",
+                "Condition": {
+                    "StringLike": {
+                        "oidc.eks.{{ .Values.aws_region }}.amazonaws.com/id/{{ .Values.aws_eks_openId_connect_number }}:sub": "system:serviceaccount:{{ .Release.Namespace }}:{{ .Values.pod_name }}-sa*"
+                    }
+                }
+            }
+        ]
+      }
+    tags:
+    {{- range $key, $value := .Values.tags }}
+      - key: {{ $key }}
+        value: {{ $value | quote }}
+    {{- end }}
+  providerConfigRef:
+    name: {{ .Values.provider_config_name }}

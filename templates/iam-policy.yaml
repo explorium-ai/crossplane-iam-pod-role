@@ -1,0 +1,17 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Policy
+metadata:
+  name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    description:  "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+    document: {{ .Values.PolicyDocument | toJson | quote }}
+    name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+    tags:
+    {{- range $key, $value := .Values.tags }}
+      - key: {{ $key }}
+        value: {{ $value | quote }}
+    {{- end }}
+  providerConfigRef:
+    name: {{ .Values.provider_config_name }}

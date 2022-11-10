@@ -1,0 +1,12 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: "{{ .Values.pod_name }}-role-policy-attach"
+spec:
+  forProvider:
+    policyArnRef:
+      name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+    roleNameRef:
+      name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+  providerConfigRef:
+    name: {{ .Values.provider_config_name }}
