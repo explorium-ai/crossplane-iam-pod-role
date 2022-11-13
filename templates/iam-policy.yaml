@@ -1,17 +1,31 @@
+
+{{  $ms_root := .Values }}
+
+{{ if $ms_root.policies }}
+{{ range $policie_entry, $policies_data := $ms_root.policies }}
+
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Policy
 metadata:
-  name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+  name: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
 spec:
   deletionPolicy: Delete
   forProvider:
-    description:  "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
-    document: {{ .Values.PolicyDocument | toJson | quote }}
-    name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+    description:  "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
+    document: {{ $policies_data | toJson | quote }}
+    name: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
     tags:
-    {{- range $key, $value := .Values.tags }}
+    {{- range $key, $value := $ms_root.tags }}
       - key: {{ $key }}
         value: {{ $value | quote }}
     {{- end }}
   providerConfigRef:
-    name: {{ .Values.provider_config_name }}
+    name: {{ $ms_root.provider_config_name }}
+
+
+
+---
+
+
+{{ end }}
+{{ end }}
