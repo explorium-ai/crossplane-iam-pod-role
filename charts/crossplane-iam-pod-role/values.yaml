@@ -22,51 +22,51 @@ aws_eks_openId_connect_number: "1111111111222222222GGGGGGGGGPPPPPPPPPP"
 # -- Aws region for the Iam role trust relationship policy
 aws_region: eu-west-1
 # -- map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role
-policies:
-    policydocument1:
-        {
-            "Id": "crossplane-eks-policydocument1",
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Action": [
-                        "iam:CreateServiceLinkedRole"
-                    ],
-                    "Condition": {
-                        "StringEquals": {
-                            "iam:AWSServiceName": [
-                                "elasticloadbalancing.amazonaws.com"
-                            ]
-                        }
-                    },
-                    "Effect": "Allow",
-                    "Resource": "*",
-                    "Sid": ""
-                }
-            ]
-        }
-    policydocument2:
-        {
-            "Id": "crossplane-eks-policydocument2",
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Action": [
-                        "iam:CreateServiceLinkedRole"
-                    ],
-                    "Condition": {
-                        "StringEquals": {
-                            "iam:AWSServiceName": [
-                                "elasticloadbalancing.amazonaws.com"
-                            ]
-                        }
-                    },
-                    "Effect": "Allow",
-                    "Resource": "*",
-                    "Sid": ""
-                }
-            ]
-        }
+policies: []
+    # policydocument1:
+    #     {
+    #         "Id": "crossplane-eks-policydocument1",
+    #         "Version": "2012-10-17",
+    #         "Statement": [
+    #             {
+    #                 "Action": [
+    #                     "iam:CreateServiceLinkedRole"
+    #                 ],
+    #                 "Condition": {
+    #                     "StringEquals": {
+    #                         "iam:AWSServiceName": [
+    #                             "elasticloadbalancing.amazonaws.com"
+    #                         ]
+    #                     }
+    #                 },
+    #                 "Effect": "Allow",
+    #                 "Resource": "*",
+    #                 "Sid": ""
+    #             }
+    #         ]
+    #     }
+    # policydocument2:
+    #     {
+    #         "Id": "crossplane-eks-policydocument2",
+    #         "Version": "2012-10-17",
+    #         "Statement": [
+    #             {
+    #                 "Action": [
+    #                     "iam:CreateServiceLinkedRole"
+    #                 ],
+    #                 "Condition": {
+    #                     "StringEquals": {
+    #                         "iam:AWSServiceName": [
+    #                             "elasticloadbalancing.amazonaws.com"
+    #                         ]
+    #                     }
+    #                 },
+    #                 "Effect": "Allow",
+    #                 "Resource": "*",
+    #                 "Sid": ""
+    #             }
+    #         ]
+    #     }
 
 # -- String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below
 provider_config_name: aws-provider
