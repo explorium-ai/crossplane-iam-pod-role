@@ -12,11 +12,11 @@ keywords:
 - microservice
 - service account
 maintainers:
-- email: oren.levi@explorium.ai
+- email: devops@explorium.ai
   name: Explorium's Devops Team
   url: https://github.com/explorium-ai
 name: crossplane-iam-pod-role
 sources:
 - https://github.com/explorium-ai
 type: application
-version: 1.0.0
+version: 0.0.1
