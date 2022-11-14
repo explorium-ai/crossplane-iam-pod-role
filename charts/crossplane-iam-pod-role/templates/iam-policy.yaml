@@ -4,6 +4,7 @@
 {{ if $ms_root.policies }}
 {{ range $policie_entry, $policies_data := $ms_root.policies }}
 
+
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Policy
 metadata:
