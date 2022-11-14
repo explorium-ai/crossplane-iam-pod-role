@@ -1,16 +1,27 @@
-## pod_name is the name of the pod that is going to assume this new created iam role
-## pod_name will be part of the name of the iam/policy that will be created
+
+# -- String - Defines the role name prefix. Part of the iam role/policy name that will be created
+role_name_prefix: "crossplane-eks-"
+
+# -- String - Defines the pod name that will assume the permissions. Part of the iam role/policy name that will be created
 pod_name: my-pod-name
+
+# -- String - Defines the cluster name that we are using. Part of the iam role/policy name that will be created
+cluster_name: platform-dev
+
 service_account:
+# --  Defines if service account will be created
   create: true
+# -- Defines the imagePullSecrets atributes for the service account. (not required)
   imagePullSecrets: 
    - name: expregistrykey
-## cluster_name will be part of the name of the iam/policy that will be created
-cluster_name: platform-dev
-role_name_prefix: "crossplane-eks-"
+
+# -- Aws account id for the Iam role trust relationship policy
 aws_account_id: "1234567890"
+# -- Aws Eks openId connect id for the Iam role trust relationship policy
 aws_eks_openId_connect_number: "1111111111222222222GGGGGGGGGPPPPPPPPPP"
+# -- Aws region for the Iam role trust relationship policy
 aws_region: eu-west-1
+# -- map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role
 policies:
     policydocument1:
         {
@@ -56,7 +67,11 @@ policies:
                 }
             ]
         }
+
+# -- String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below
 provider_config_name: aws-provider
+
+# -- map of string -> string pairs - Iam role and policies Aws tags
 tags:
   Component: k8s
   Environment: dev

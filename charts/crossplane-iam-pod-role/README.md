@@ -124,35 +124,17 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| aws_account_id | string | `"1234567890"` |  |
-| aws_eks_openId_connect_number | string | `"1111111111222222222GGGGGGGGGPPPPPPPPPP"` |  |
-| aws_region | string | `"eu-west-1"` |  |
-| cluster_name | string | `"platform-dev"` |  |
-| pod_name | string | `"my-pod-name"` |  |
-| policies.policydocument1.Id | string | `"crossplane-eks-policydocument1"` |  |
-| policies.policydocument1.Statement[0].Action[0] | string | `"iam:CreateServiceLinkedRole"` |  |
-| policies.policydocument1.Statement[0].Condition.StringEquals.iam:AWSServiceName[0] | string | `"elasticloadbalancing.amazonaws.com"` |  |
-| policies.policydocument1.Statement[0].Effect | string | `"Allow"` |  |
-| policies.policydocument1.Statement[0].Resource | string | `"*"` |  |
-| policies.policydocument1.Statement[0].Sid | string | `""` |  |
-| policies.policydocument1.Version | string | `"2012-10-17"` |  |
-| policies.policydocument2.Id | string | `"crossplane-eks-policydocument2"` |  |
-| policies.policydocument2.Statement[0].Action[0] | string | `"iam:CreateServiceLinkedRole"` |  |
-| policies.policydocument2.Statement[0].Condition.StringEquals.iam:AWSServiceName[0] | string | `"elasticloadbalancing.amazonaws.com"` |  |
-| policies.policydocument2.Statement[0].Effect | string | `"Allow"` |  |
-| policies.policydocument2.Statement[0].Resource | string | `"*"` |  |
-| policies.policydocument2.Statement[0].Sid | string | `""` |  |
-| policies.policydocument2.Version | string | `"2012-10-17"` |  |
-| provider_config_name | string | `"aws-provider"` |  |
-| role_name_prefix | string | `"crossplane-eks-"` |  |
-| service_account.create | bool | `true` |  |
-| service_account.imagePullSecrets[0].name | string | `"expregistrykey"` |  |
-| tags.Component | string | `"k8s"` |  |
-| tags.Environment | string | `"dev"` |  |
-| tags.ManageBy | string | `"crossplane-platform-dev"` |  |
-| tags.Name | string | `"crossplane-k8s-aws-load-balancer-controller"` |  |
-| tags.Team | string | `"RND"` |  |
-| tags.Type | string | `"Platform"` |  |
+| aws_account_id | string | `"1234567890"` | Aws account id for the Iam role trust relationship policy |
+| aws_eks_openId_connect_number | string | `"1111111111222222222GGGGGGGGGPPPPPPPPPP"` | Aws Eks openId connect id for the Iam role trust relationship policy |
+| aws_region | string | `"eu-west-1"` | Aws region for the Iam role trust relationship policy |
+| cluster_name | string | `"platform-dev"` | String - Defines the cluster name that we are using. Part of the iam role/policy name that will be created |
+| pod_name | string | `"my-pod-name"` | String - Defines the pod name that will assume the permissions. Part of the iam role/policy name that will be created |
+| policies | object | `{"policydocument1":{"Id":"crossplane-eks-policydocument1","Statement":[{"Action":["iam:CreateServiceLinkedRole"],"Condition":{"StringEquals":{"iam:AWSServiceName":["elasticloadbalancing.amazonaws.com"]}},"Effect":"Allow","Resource":"*","Sid":""}],"Version":"2012-10-17"},"policydocument2":{"Id":"crossplane-eks-policydocument2","Statement":[{"Action":["iam:CreateServiceLinkedRole"],"Condition":{"StringEquals":{"iam:AWSServiceName":["elasticloadbalancing.amazonaws.com"]}},"Effect":"Allow","Resource":"*","Sid":""}],"Version":"2012-10-17"}}` | map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role |
+| provider_config_name | string | `"aws-provider"` | String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below |
+| role_name_prefix | string | `"crossplane-eks-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
+| service_account.create | bool | `true` | Defines if service account will be created |
+| service_account.imagePullSecrets | list | `[{"name":"expregistrykey"}]` | Defines the imagePullSecrets atributes for the service account. (not required) |
+| tags | object | `{"Component":"k8s","Environment":"dev","ManageBy":"crossplane-platform-dev","Name":"crossplane-k8s-aws-load-balancer-controller","Team":"RND","Type":"Platform"}` | map of string -> string pairs - Iam role and policies Aws tags |
 
 **Homepage:** <https://www.explorium.ai/>
 
