@@ -99,8 +99,8 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     tags:
         Component: k8s
         Environment: dev
-        ManageBy: crossplane-platform-dev
-        Name: crossplane-k8s-aws-load-balancer-controller
+        ManageBy: crossplane-my-cluster
+        Name: crossplane-k8s-my-pod
         Team: RND
         Type: Platform
     ```
