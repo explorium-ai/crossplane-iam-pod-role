@@ -1,11 +1,16 @@
-# Crossplane Iam Pod Role
+# crossplane-iam-pod-role
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/explorium-ai/crossplane-iam-pod-role)](https://img.shields.io/github/v/release/explorium-ai/crossplane-iam-pod-role)
+![Version: 0.0.7](https://img.shields.io/badge/Version-0.0.7-informational?style=for-the-badge)
+![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
+![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=for-the-badge)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/crossplane-iam-pod-role)](https://artifacthub.io/packages/search?repo=crossplane-iam-pod-role)
+## Description
 
-**crossplane-iam-pod-role** is a kubernetes chart that is an aggregation of *crossplane crd manifests with service account*. 
+this chart will create Aws Iam role, policy and service account that every pod can easily assume and use. (using Crossplane)
 
-It allows for k8s applications to manage and create their own Aws cloud permissions. It uses [Crossplane](https://github.com/crossplane/crossplane) as its main crd manifests, an [Aws OIDC identity provider](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/) is the natively Eks way of assuming Aws Iam roles, we combine both into 1 easy single helm chart for utilize the permissions. 
+**crossplane-iam-pod-role** is a kubernetes chart that is an aggregation of *crossplane crd manifests with service account*.
+
+It allows for k8s applications to manage and create their own Aws cloud permissions. It uses [Crossplane](https://github.com/crossplane/crossplane) as its main crd manifests, an [Aws OIDC identity provider](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/) is the natively Eks way of assuming Aws Iam roles, we combine both into 1 easy single helm chart for utilize the permissions.
 
 ## Prerequisite of this chart
 
@@ -32,12 +37,12 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     # -- # Defines the service account that will be created
     service_account:
       create: true
-    # -- # Defines the imagePullSecrets atributes for the service account. (not required)  
-      imagePullSecrets: 
+    # -- # Defines the imagePullSecrets atributes for the service account. (not required) 
+      imagePullSecrets:
         - name: my-secret
 
     # -- # Aws configurations
-    
+   
     # -- # Aws account id for the Iam role trust relationship policy
     aws_account_id: "1234567890"
     # -- # Aws Eks openId connect id for the Iam role trust relationship policy
@@ -114,14 +119,31 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     $ helm repo update
     $ helm install crossplane-iam-pod-role/crossplane-iam-pod-role -f values.yaml
     ```
-## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on the process for submitting pull requests.
+## Values
 
-## Code of Conduct
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| aws_account_id | string | `"1234567890"` | Aws account id for the Iam role trust relationship policy |
+| aws_eks_openId_connect_number | string | `"1111111111222222222GGGGGGGGGPPPPPPPPPP"` | Aws Eks openId connect id for the Iam role trust relationship policy |
+| aws_region | string | `"eu-west-1"` | Aws region for the Iam role trust relationship policy |
+| cluster_name | string | `"my-cluster-name"` | String - Defines the cluster name that we are using. Part of the iam role/policy name that will be created |
+| pod_name | string | `"my-pod-name"` | String - Defines the pod name that will assume the permissions. Part of the iam role/policy name that will be created |
+| policies | object | `{"policydocument1":{"Id":"crossplane-eks-policydocument1","Statement":[{"Action":["iam:CreateServiceLinkedRole"],"Condition":{"StringEquals":{"iam:AWSServiceName":["elasticloadbalancing.amazonaws.com"]}},"Effect":"Allow","Resource":"*","Sid":""}],"Version":"2012-10-17"},"policydocument2":{"Id":"crossplane-eks-policydocument2","Statement":[{"Action":["iam:CreateServiceLinkedRole"],"Condition":{"StringEquals":{"iam:AWSServiceName":["elasticloadbalancing.amazonaws.com"]}},"Effect":"Allow","Resource":"*","Sid":""}],"Version":"2012-10-17"}}` | map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role |
+| provider_config_name | string | `"aws-provider"` | String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below |
+| role_name_prefix | string | `"crossplane-eks-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
+| service_account.create | bool | `true` | Defines if service account will be created |
+| service_account.imagePullSecrets | list | `[{"name":"my-secret"}]` | Defines the imagePullSecrets atributes for the service account. (not required) |
+| tags | object | `{"Component":"k8s","Environment":"dev","ManageBy":"crossplane-my-cluster-name","Name":"crossplane-k8s-my-pod","Team":"RND","Type":"Platform"}` | map of string -> string pairs - Iam role and policies Aws tags |
 
-Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct, and how to report violations.
+**Homepage:** <https://www.explorium.ai/>
 
-## License
+## Source Code
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+* <https://github.com/explorium-ai>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Explorium's Devops Team | <devops@explorium.ai> | <https://github.com/explorium-ai> |

@@ -1,7 +1,12 @@
-# Crossplane Iam Pod Role
+# crossplane-iam-pod-role
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/explorium-ai/crossplane-iam-pod-role)](https://img.shields.io/github/v/release/explorium-ai/crossplane-iam-pod-role)
+![Version: {{ .Version }}](https://img.shields.io/badge/Version-{{ .Version | replace "-" "--" }}-informational?style=for-the-badge)
+{{ if .Type }}![Type: {{ .Type }}](https://img.shields.io/badge/Type-{{ .Type }}-informational?style=for-the-badge){{ end }}
+{{ if .AppVersion }}![AppVersion: {{ .AppVersion }}](https://img.shields.io/badge/AppVersion-{{ .AppVersion | replace "-" "--" }}-informational?style=for-the-badge){{ end }}
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/crossplane-iam-pod-role)](https://artifacthub.io/packages/search?repo=crossplane-iam-pod-role)
+## Description
+
+{{ template "chart.description" . }}
 
 **crossplane-iam-pod-role** is a kubernetes chart that is an aggregation of *crossplane crd manifests with service account*. 
 
@@ -114,14 +119,11 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     $ helm repo update
     $ helm install crossplane-iam-pod-role/crossplane-iam-pod-role -f values.yaml
     ```
-## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on the process for submitting pull requests.
+{{ template "chart.valuesSection" . }}
 
-## Code of Conduct
+{{ template "chart.homepageLine" . }}
 
-Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct, and how to report violations.
+{{ template "chart.sourcesSection" . }}
 
-## License
-
-This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details
+{{ template "chart.maintainersSection" . }}

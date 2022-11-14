@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/explorium-ai/crossplane-iam-pod-role.git
+    rev: 0.0.1-helm
+    hooks:
+      - id: helm-docs
+        args:
+          - --template-files=README.md.gotmpl
