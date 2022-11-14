@@ -6,14 +6,14 @@ role_name_prefix: "crossplane-eks-"
 pod_name: my-pod-name
 
 # -- String - Defines the cluster name that we are using. Part of the iam role/policy name that will be created
-cluster_name: platform-dev
+cluster_name: my-cluster-name
 
 service_account:
 # --  Defines if service account will be created
   create: true
 # -- Defines the imagePullSecrets atributes for the service account. (not required)
   imagePullSecrets: 
-   - name: expregistrykey
+   - name: my-secret
 
 # -- Aws account id for the Iam role trust relationship policy
 aws_account_id: "1234567890"
@@ -75,7 +75,7 @@ provider_config_name: aws-provider
 tags:
   Component: k8s
   Environment: dev
-  ManageBy: crossplane-platform-dev
-  Name: crossplane-k8s-aws-load-balancer-controller
+  ManageBy: crossplane-my-cluster-name
+  Name: crossplane-k8s-my-pod
   Team: RND
   Type: Platform
