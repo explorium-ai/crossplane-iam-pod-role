@@ -9,7 +9,7 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 
 ## Prerequisite of this chart
 
-1. Please follow the [Oidc provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html) docs amd install it into your cluster
+1. Please follow the [Oidc provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html) docs and install it into your cluster
 2. Please follow the [Crossplane](https://artifacthub.io/packages/helm/crossplane/crossplane) docs and install it into your cluster.
    once installed, make sure to add Iam full permissions to your ProviderConfig.
 ## Install using Helm chart
@@ -17,13 +17,16 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 - Configure the below values
     ```yaml
 
-    # -- # Defines the role name prefix - part of the iam role/policy name that will be created
+    # -- # Defines the role name prefix.
+    # -- # Part of the iam role/policy name that will be created
     role_name_prefix: "crossplane-eks-"
 
-    # -- # Defines the pod name that will assume the permissions. part of the iam role/policy name that will be created
+    # -- # Defines the pod name that will assume the permissions.
+    # -- # Part of the iam role/policy name that will be created
     pod_name: "my-pod-name"
 
-    # -- # Defines the cluster name that we are using. part of the iam role/policy name that will be created
+    # -- # Defines the cluster name that we are using.
+    # -- # Part of the iam role/policy name that will be created
     cluster_name: "my-cluster-name"
 
     # -- # Defines the service account that will be created
@@ -88,7 +91,8 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
                     }
                 ]
             }
-    # -- # Defines the name of the crossplane provider-config, which should be predefined with Iam full access
+    # -- # Defines the name of the crossplane provider-config,
+    # -- # which should be predefined with Iam full access
     # -- # for more info, look at aws-provider docs below
     provider_config_name: aws-provider
     # -- # Iam role and policies Aws tags
