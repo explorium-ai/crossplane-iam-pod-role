@@ -19,4 +19,4 @@ name: crossplane-iam-pod-role
 sources:
 - https://github.com/explorium-ai
 type: application
-version: 0.0.5
+version: 0.0.6
