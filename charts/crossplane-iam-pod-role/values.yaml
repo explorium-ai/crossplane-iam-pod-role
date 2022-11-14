@@ -8,7 +8,7 @@ service_account:
 # --  Defines if service account will be created
   create: true
 # -- Defines the imagePullSecrets atributes for the service account. (not required)
-  imagePullSecrets: 
+  imagePullSecrets:
   - name: my-secret
 # -- Aws account id for the Iam role trust relationship policy
 aws_account_id: "1234567890"
