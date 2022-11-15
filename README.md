@@ -35,6 +35,11 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     # -- # Defines the imagePullSecrets atributes for the service account. (not required)  
       imagePullSecrets: 
         - name: my-secret
+    # -- # Defines the annotations for the service account. (not required)
+      annotations: 
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 
     # -- # Aws configurations
     
