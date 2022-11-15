@@ -9,7 +9,7 @@ apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Policy
 metadata:
   name: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
-  {{- if .Values.pre_install_annotations }}
+  {{- if $ms_root.pre_install_annotations }}
   annotations:
     helm.sh/hook: pre-install
   {{- end  }}

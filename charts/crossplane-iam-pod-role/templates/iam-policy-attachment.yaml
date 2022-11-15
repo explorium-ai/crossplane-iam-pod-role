@@ -9,7 +9,7 @@ apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
   name: "{{ $ms_root.pod_name }}-role-policy-attach-{{ $policie_entry }}"
-  {{- if .Values.pre_install_annotations }}
+  {{- if $ms_root.pre_install_annotations }}
   annotations:
     helm.sh/hook: pre-install
   {{- end  }}
