@@ -10,6 +10,10 @@ service_account:
 # -- Defines the imagePullSecrets atributes for the service account. (not required)
   imagePullSecrets:
   - name: my-secret
+  annotations: {}
+    # argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/sync-wave: "1"
+    # argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 # -- Aws account id for the Iam role trust relationship policy
 aws_account_id: "1234567890"
 # -- Aws Eks openId connect id for the Iam role trust relationship policy

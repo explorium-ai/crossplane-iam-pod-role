@@ -37,9 +37,14 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     # -- # Defines the service account that will be created
     service_account:
       create: true
-    # -- # Defines the imagePullSecrets atributes for the service account. (not required) 
+    # -- # Defines the imagePullSecrets atributes for the service account. (not required)
       imagePullSecrets:
         - name: my-secret
+    # -- # Defines the annotations for the service account. (not required)
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 
     # -- # Aws configurations
    
@@ -132,6 +137,7 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 | policies | list | `[]` | map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role |
 | provider_config_name | string | `"aws-provider"` | String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below |
 | role_name_prefix | string | `"crossplane-eks-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
+| service_account.annotations | object | `{}` |  |
 | service_account.create | bool | `true` | Defines if service account will be created |
 | service_account.imagePullSecrets | list | `[{"name":"my-secret"}]` | Defines the imagePullSecrets atributes for the service account. (not required) |
 | tags | object | `{"Component":"k8s","Environment":"dev","ManageBy":"crossplane-my-cluster-name","Name":"crossplane-k8s-my-pod","Team":"RND","Type":"Platform"}` | map of string -> string pairs - Iam role and policies Aws tags |
