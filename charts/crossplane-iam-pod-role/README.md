@@ -1,6 +1,6 @@
 # crossplane-iam-pod-role
 
-![Version: 0.0.16](https://img.shields.io/badge/Version-0.0.16-informational?style=for-the-badge)
+![Version: 0.0.17](https://img.shields.io/badge/Version-0.0.17-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=for-the-badge)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/crossplane-iam-pod-role)](https://artifacthub.io/packages/search?repo=crossplane-iam-pod-role)
@@ -40,6 +40,8 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     # -- # Defines the imagePullSecrets atributes for the service account. (not required)
       imagePullSecrets:
         - name: my-secret
+    # -- # Defines if to enable regional endpoint for the aws sts service (not required)
+      sts_regional_endpoints: true
 
     # --  Defines if service account and other resources will have the annotation:
     # --  "helm.sh/hook: pre-install" and will be create first in any combination with other charts
@@ -139,6 +141,7 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 | role_name_prefix | string | `"crossplane-eks-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
 | service_account.create | bool | `true` | Defines if service account will be created |
 | service_account.imagePullSecrets | list | `[{"name":"my-secret"}]` | Defines the imagePullSecrets atributes for the service account. (not required) |
+| service_account.sts_regional_endpoints | bool | `true` |  |
 | tags | object | `{"Component":"k8s","Environment":"dev","ManageBy":"crossplane-my-cluster-name","Name":"crossplane-k8s-my-pod","Team":"RND","Type":"Platform"}` | map of string -> string pairs - Iam role and policies Aws tags |
 
 **Homepage:** <https://www.explorium.ai/>

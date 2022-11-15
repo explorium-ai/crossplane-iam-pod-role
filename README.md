@@ -35,6 +35,8 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
     # -- # Defines the imagePullSecrets atributes for the service account. (not required)  
       imagePullSecrets: 
         - name: my-secret
+    # -- # Defines if to enable regional endpoint for the aws sts service (not required)
+      sts_regional_endpoints: true
 
     # --  Defines if service account and other resources will have the annotation:
     # --  "helm.sh/hook: pre-install" and will be create first in any combination with other charts

@@ -13,6 +13,8 @@ service_account:
 # -- Defines the imagePullSecrets atributes for the service account. (not required)
   imagePullSecrets:
   - name: my-secret
+# -- # Defines if to enable regional endpoint for the aws sts service (not required)
+  sts_regional_endpoints: true
 # -- Aws account id for the Iam role trust relationship policy
 aws_account_id: "1234567890"
 # -- Aws Eks openId connect id for the Iam role trust relationship policy
