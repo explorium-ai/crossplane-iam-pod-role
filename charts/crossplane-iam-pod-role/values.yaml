@@ -4,6 +4,9 @@ role_name_prefix: "crossplane-eks-"
 pod_name: my-pod-name
 # -- String - Defines the cluster name that we are using. Part of the iam role/policy name that will be created
 cluster_name: my-cluster-name
+# --  Defines if service account and other resources will have the annotation:
+# --  "helm.sh/hook: pre-install" and will be create first in any combination with other charts
+pre_install_annotations: true
 service_account:
 # --  Defines if service account will be created
   create: true
