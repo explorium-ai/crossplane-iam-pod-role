@@ -21,7 +21,7 @@ spec:
         value: {{ $value | quote }}
     {{- end }}
       - key: crossplane-kind
-          value: policy.iam.aws.crossplane.io
+        value: policy.iam.aws.crossplane.io
       - key: crossplane-name
         value: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
   providerConfigRef:
