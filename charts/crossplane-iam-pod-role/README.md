@@ -146,4 +146,4 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Explorium's Devops Team | <devops@explorium.ai> | <https://github.com/explorium-ai> |
+| explorium-ai | <devops@explorium.ai> | <https://www.explorium.ai/> |

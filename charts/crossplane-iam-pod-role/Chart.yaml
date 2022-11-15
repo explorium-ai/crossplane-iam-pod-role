@@ -13,8 +13,8 @@ keywords:
 - service account
 maintainers:
 - email: devops@explorium.ai
-  name: Explorium's Devops Team
-  url: https://github.com/explorium-ai
+  name: explorium-ai
+  url: https://www.explorium.ai/
 name: crossplane-iam-pod-role
 sources:
 - https://github.com/explorium-ai
