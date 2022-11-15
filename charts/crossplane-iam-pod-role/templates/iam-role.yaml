@@ -30,6 +30,6 @@ spec:
       - key: crossplane-kind
         value: role.iam.aws.crossplane.io
       - key: crossplane-name
-        value: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
+        value: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
   providerConfigRef:
     name: {{ .Values.provider_config_name }}
