@@ -75,5 +75,3 @@ tags:
   Environment: dev
   ManageBy: crossplane-my-cluster-name
   Name: crossplane-k8s-my-pod
-  Team: RND
-  Type: Platform
