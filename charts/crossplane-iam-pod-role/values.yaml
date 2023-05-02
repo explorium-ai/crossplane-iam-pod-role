@@ -7,6 +7,8 @@ cluster_name: my-cluster-name
 # --  Defines if service account and other resources will have the annotation:
 # --  "helm.sh/hook: pre-install" and will be create first in any combination with other charts
 pre_install_annotations: true
+# -- Defines if to create instance profile for the role
+createInstanceProfile: false
 service_account:
 # --  Defines if service account will be created
   create: true
