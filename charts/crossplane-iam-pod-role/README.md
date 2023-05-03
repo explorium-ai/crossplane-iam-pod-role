@@ -1,6 +1,6 @@
 # crossplane-iam-pod-role
 
-![Version: 0.0.22](https://img.shields.io/badge/Version-0.0.22-informational?style=for-the-badge)
+![Version: 0.0.23](https://img.shields.io/badge/Version-0.0.23-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=for-the-badge)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/crossplane-iam-pod-role)](https://artifacthub.io/packages/search?repo=crossplane-iam-pod-role)
