@@ -1,13 +1,13 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Role
 metadata:
-  name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+  name: "{{ include "roleName" . }}"
   {{- if .Values.pre_install_annotations }}
   annotations:
     helm.sh/hook: pre-install
   {{- end  }}
   labels:
-    addToInstanceProfile: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"  
+    addToInstanceProfile: "{{ include "roleName" . }}"  
 spec:
   forProvider:
     assumeRolePolicyDocument: |
@@ -54,6 +54,6 @@ spec:
       - key: crossplane-kind
         value: role.iam.aws.crossplane.io
       - key: crossplane-name
-        value: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+        value: "{{ include "roleName" . }}"
   providerConfigRef:
     name: {{ .Values.provider_config_name }}

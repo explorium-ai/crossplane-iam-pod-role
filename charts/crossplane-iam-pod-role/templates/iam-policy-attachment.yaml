@@ -1,6 +1,6 @@
 
 {{  $ms_root := .Values }}
-
+{{  $root := . }}
 {{ if $ms_root.policies }}
 {{ range $policie_entry, $policies_data := $ms_root.policies }}
 
@@ -16,9 +16,9 @@ metadata:
 spec:
   forProvider:
     policyArnRef:
-      name: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}-{{ $policie_entry }}"
+      name: "{{ include "roleName" $root }}-{{ $policie_entry }}"
     roleNameRef:
-      name: "{{ $ms_root.role_name_prefix }}-{{ $ms_root.cluster_name }}-{{ $ms_root.pod_name }}"
+      name: "{{ include "roleName" $root }}"
   providerConfigRef:
     name: {{ $ms_root.provider_config_name }}
 

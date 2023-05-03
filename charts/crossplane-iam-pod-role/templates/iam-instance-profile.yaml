@@ -2,12 +2,12 @@
 apiVersion: iam.aws.crossplane.io/v1alpha1
 kind: InstanceProfile
 metadata:
-  name: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+  name: {{ include "roleName" . }}
 spec:
   forProvider:
     roleSelector:
       matchLabels:
-        addToInstanceProfile: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"  
+        addToInstanceProfile: {{ include "roleName" . }}
     tags:
     {{- range $key, $value := .Values.tags }}
       - key: {{ $key }}
@@ -16,7 +16,7 @@ spec:
       - key: crossplane-kind
         value: instance-profile.iam.aws.crossplane.io
       - key: crossplane-name
-        value: "{{ .Values.role_name_prefix }}-{{ .Values.cluster_name }}-{{ .Values.pod_name }}"
+        value: {{ include "roleName" . }}
   providerConfigRef:
     name: {{ .Values.provider_config_name }}        
 {{ end }}
