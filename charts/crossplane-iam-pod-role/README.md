@@ -1,6 +1,6 @@
 # crossplane-iam-pod-role
 
-![Version: 0.0.20](https://img.shields.io/badge/Version-0.0.20-informational?style=for-the-badge)
+![Version: 0.0.21](https://img.shields.io/badge/Version-0.0.21-informational?style=for-the-badge)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=for-the-badge)
 ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=for-the-badge)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/crossplane-iam-pod-role)](https://artifacthub.io/packages/search?repo=crossplane-iam-pod-role)
@@ -140,7 +140,7 @@ It allows for k8s applications to manage and create their own Aws cloud permissi
 | pre_install_annotations | bool | `true` | "helm.sh/hook: pre-install" and will be create first in any combination with other charts |
 | provider_config_name | string | `"aws-provider"` | String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below |
 | release_suffix | bool | `false` | Defines if to add the release name to the role name suffix |
-| role_name_prefix | string | `"crossplane-eks-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
+| role_name_prefix | string | `"crossplane-"` | String - Defines the role name prefix. Part of the iam role/policy name that will be created |
 | service_account.create | bool | `true` | Defines if service account will be created |
 | service_account.sts_regional_endpoints | bool | `true` | # Defines if to enable regional endpoint for the aws sts service (not required) |
 | tags | object | `{"Component":"k8s","Environment":"dev","ManageBy":"crossplane-my-cluster-name","Name":"crossplane-k8s-my-pod"}` | map of string -> string pairs - Iam role and policies Aws tags |

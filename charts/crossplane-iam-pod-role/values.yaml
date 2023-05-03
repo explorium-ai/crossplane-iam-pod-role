@@ -1,5 +1,5 @@
 # -- String - Defines the role name prefix. Part of the iam role/policy name that will be created
-role_name_prefix: "crossplane-eks-"
+role_name_prefix: "crossplane-"
 # -- Defines if to add the release name to the role name suffix
 release_suffix: false
 # -- String - Defines the pod name that will assume the permissions. Part of the iam role/policy name that will be created
