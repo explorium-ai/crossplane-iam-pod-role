@@ -26,7 +26,8 @@ aws_eks_openId_connect_number: "1111111111222222222GGGGGGGGGPPPPPPPPPP"
 # -- Aws region for the Iam role trust relationship policy
 aws_region: eu-west-1
 # -- map of string -> jsons pairs - Defines the Iam policies that will be created and attached to the Iam role
-policies: []
+policies: {}
+extra_policies: {}
     # policydocument1:
     #     {
     #         "Id": "crossplane-eks-policydocument1",
