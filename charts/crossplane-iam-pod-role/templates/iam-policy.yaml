@@ -2,7 +2,7 @@
 {{  $ms_root := .Values }}
 {{  $root := . }}
 {{ if $ms_root.policies }}
-{{ range $policie_entry, $policies_data := $ms_root.policies }}
+{{ range $policie_entry, $policies_data := deepCopy $ms_root.policies | merge $ms_root.extra_policies }}
 
 
 apiVersion: iam.aws.crossplane.io/v1beta1
