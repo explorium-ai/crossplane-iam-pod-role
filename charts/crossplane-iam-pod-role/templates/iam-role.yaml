@@ -51,8 +51,6 @@ spec:
       - key: {{ $key }}
         value: {{ $value | quote }}
     {{- end }}
-      - key: crossplane-kind
-        value: role.iam.aws.crossplane.io
       - key: crossplane-name
         value: "{{ include "roleName" . }}"
   providerConfigRef:
