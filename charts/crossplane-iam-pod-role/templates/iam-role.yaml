@@ -55,5 +55,7 @@ spec:
         value: role.iam.aws.crossplane.io
       - key: crossplane-name
         value: "{{ include "roleName" . }}"
+      - key: crossplane-providerconfig	
+        value: aws-provider
   providerConfigRef:
     name: {{ .Values.provider_config_name }}
