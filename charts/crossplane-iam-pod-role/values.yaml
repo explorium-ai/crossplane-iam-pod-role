@@ -75,6 +75,10 @@ extra_policies: {}
 # -- String - Defines the name of the crossplane provider-config, which should be predefined with Iam full access, for more info, look at aws-provider docs below
 provider_config_name: aws-provider
 # -- map of string -> string pairs - Iam role and policies Aws tags
+default_tags:
+  roles:
+    crossplane-kind: role.iam.aws.crossplane.io
+    crossplane-providerconfig: aws-provider
 tags:
   Component: k8s
   Environment: dev
