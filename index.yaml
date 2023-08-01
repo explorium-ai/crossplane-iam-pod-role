@@ -3,6 +3,32 @@ entries:
   crossplane-iam-pod-role:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-08-01T14:14:34.080162512Z"
+    description: this chart will create Aws Iam role, policy and service account that
+      every pod can easily assume and use. (using Crossplane)
+    digest: 09c311685a0561307da93aa2557ab15ceed1d1c2b5334c631622a319dd30f031
+    home: https://www.explorium.ai/
+    icon: https://cdn.document360.io/logo/c090f1be-497d-4046-81a3-b626de1a191a/14e4bcb39b6547eb94fa54c5a0bc4860-Logo%20full.png
+    keywords:
+    - aws
+    - iam
+    - crossplane
+    - cncf
+    - microservice
+    - service account
+    maintainers:
+    - email: devops@explorium.ai
+      name: explorium-ai
+      url: https://www.explorium.ai/
+    name: crossplane-iam-pod-role
+    sources:
+    - https://github.com/explorium-ai
+    type: application
+    urls:
+    - https://github.com/explorium-ai/crossplane-iam-pod-role/releases/download/0.0.26-helm/crossplane-iam-pod-role-0.0.26.tgz
+    version: 0.0.26
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-08-01T12:57:45.574723091Z"
     description: this chart will create Aws Iam role, policy and service account that
       every pod can easily assume and use. (using Crossplane)
@@ -443,4 +469,4 @@ entries:
     urls:
     - https://github.com/explorium-ai/crossplane-iam-pod-role/releases/download/0.0.9-helm/crossplane-iam-pod-role-0.0.9.tgz
     version: 0.0.9
-generated: "2023-08-01T12:57:45.574959092Z"
+generated: "2023-08-01T14:14:34.080353013Z"
